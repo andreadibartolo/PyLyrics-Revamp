@@ -1,5 +1,5 @@
 import time
-import os
+import subprocess
 
 class Color:
     RESET = "\033[0m"
@@ -13,20 +13,20 @@ class Color:
     BOLD = "\033[1m"
 
 class Lyric():
-    def __init__(this, text: str, char_pause: float, phrase_pause: float, new_line: bool = True, color: str = ""):
-        this.text = text
-        this.char_pause = char_pause
-        this.phrase_pause = phrase_pause
-        this.new_line = new_line
-        this.color = color
+    def __init__(self, text: str, char_pause: float, phrase_pause: float, new_line: bool = True, color: str = ""):
+        self.text = text
+        self.char_pause = char_pause
+        self.phrase_pause = phrase_pause
+        self.new_line = new_line
+        self.color = color
 
 class SongLyric():
-    def __init__(this, lyrics: list[Lyric]):
-        this.lyrics = lyrics
+    def __init__(self, lyrics: list[Lyric]):
+        self.lyrics = lyrics
 
-    def play(this):
-        os.system("clear")
-        for lyric in this.lyrics:
+    def play(self):
+        subprocess.run("clear")
+        for lyric in self.lyrics:
             if lyric.color:
                 print(lyric.color, end="", flush=True)
                 
