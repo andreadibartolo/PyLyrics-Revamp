@@ -1,5 +1,8 @@
 import time
+import os
 import subprocess
+
+CLEAR_COMMAND = "cls" if os.name == "nt" else "clear"
 
 class Color:
     RESET = "\033[0m"
@@ -25,7 +28,7 @@ class SongLyric():
         self.lyrics = lyrics
 
     def play(self):
-        subprocess.run("clear")
+        subprocess.run([CLEAR_COMMAND], shell=True)
         for lyric in self.lyrics:
             if lyric.color:
                 print(lyric.color, end="", flush=True)
